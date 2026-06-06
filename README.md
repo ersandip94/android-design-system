@@ -38,6 +38,45 @@ Or tap **Sign up** to register any account (kept in an in-memory mock store for 
 module that owns its UI and ViewModels and depends only on the shared *core* modules — never on
 another feature. Within a feature, layering follows `presentation → domain ← data`.
 
+```mermaid
+flowchart LR
+    app[":app - Composition root"]
+    auth[":feature:auth - Login and signup"]
+    home[":feature:home - Destinations"]
+    core[":core - Compose design system"]
+    domain[":domain - Models, use cases, repository interfaces"]
+    data[":data - Repository implementations, Hilt modules, mock APIs"]
+    mock[":data resources - Mock JSON"]
+    lint[":lint-rules - Custom accessibility checks"]
+    buildlogic[":buildlogic - Gradle convention plugins"]
+    docs["docs-site - Component documentation"]
+
+    app -->|"hosts navigation graphs"| auth
+    app -->|"hosts navigation graphs"| home
+    app -->|"installs data bindings"| data
+    app -->|"applies theme and components"| core
+    app -->|"uses domain models"| domain
+
+    auth -->|"uses UI components"| core
+    auth -->|"calls use cases"| domain
+    home -->|"uses UI components"| core
+    home -->|"calls use cases"| domain
+
+    data -->|"implements interfaces"| domain
+    data -->|"reads bundled JSON"| mock
+
+    core -->|"publishes lint checks"| lint
+    docs -->|"documents components and theming"| core
+
+    buildlogic -.->|"configures"| app
+    buildlogic -.->|"configures"| auth
+    buildlogic -.->|"configures"| home
+    buildlogic -.->|"configures"| core
+    buildlogic -.->|"configures"| data
+    buildlogic -.->|"configures"| domain
+    buildlogic -.->|"configures"| lint
+```
+
 ### Module types
 
 | Type | Modules | Responsibility |
