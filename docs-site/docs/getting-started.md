@@ -1,16 +1,8 @@
 # Get started
 
-## 1. Add the dependency
-
-```kotlin
-dependencies {
-    implementation("com.codewithsandip:ds-core:<version>")
-}
-```
-
 Requirements: **Min SDK 24**, Kotlin + Jetpack Compose.
 
-## 2. Wrap your app in `CWSTheme`
+## 1. Wrap your app in `CWSTheme`
 
 `CWSTheme` provides the design system's color scheme, typography, shapes, and spacing. It also
 mirrors them into `MaterialTheme`, so any Material 3 components you use stay on-brand.
@@ -25,7 +17,7 @@ setContent {
 
 By default the theme follows the system light/dark setting.
 
-## 3. Use components
+## 2. Use components
 
 ```kotlin
 CWSTheme {
@@ -36,7 +28,7 @@ CWSTheme {
 }
 ```
 
-## 4. Access theme values
+## 3. Access theme values
 
 From anywhere Material is in scope:
 

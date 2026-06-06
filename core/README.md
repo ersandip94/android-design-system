@@ -3,15 +3,8 @@
 A Jetpack Compose component library: design tokens, theming (light / dark / custom brand), and a
 curated set of accessible components — all prefixed `CWS`.
 
-- **Artifact:** `com.codewithsandip:ds-core`
 - **Brand color:** `#0C3A25` · **Min SDK:** 24 · 100% Kotlin + Compose
 - **📖 Documentation:** **<https://ersandip94.github.io/android-design-system/>**
-
-```kotlin
-dependencies {
-    implementation("com.codewithsandip:ds-core:<version>")
-}
-```
 
 ---
 

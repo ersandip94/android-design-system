@@ -14,14 +14,6 @@ curated set of accessible components, all prefixed `CWS`.
 
 ---
 
-## Install
-
-```kotlin
-dependencies {
-    implementation("com.codewithsandip:ds-core:<version>")
-}
-```
-
 ## Hello, component
 
 Wrap your UI in `CWSTheme` and use any `CWS*` component:
