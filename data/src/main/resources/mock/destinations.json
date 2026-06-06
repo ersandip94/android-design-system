@@ -1,0 +1,12 @@
+[
+  { "id": "kyoto", "name": "Kyoto", "country": "Japan", "summary": "Temples, gardens, and tea houses in Japan's old capital.", "rating": 4.8, "priceFromUsd": 920, "tags": ["Culture", "History"] },
+  { "id": "santorini", "name": "Santorini", "country": "Greece", "summary": "Whitewashed cliffs and caldera sunsets in the Aegean.", "rating": 4.7, "priceFromUsd": 1100, "tags": ["Beach", "Romance"] },
+  { "id": "banff", "name": "Banff", "country": "Canada", "summary": "Turquoise lakes and peaks in the Canadian Rockies.", "rating": 4.9, "priceFromUsd": 850, "tags": ["Nature", "Hiking"] },
+  { "id": "reykjavik", "name": "Reykjavík", "country": "Iceland", "summary": "Northern lights, geothermal spas, and volcanic coastlines.", "rating": 4.6, "priceFromUsd": 1300, "tags": ["Nature", "Adventure"] },
+  { "id": "capetown", "name": "Cape Town", "country": "South Africa", "summary": "Table Mountain, vineyards, and two-ocean coastline.", "rating": 4.7, "priceFromUsd": 990, "tags": ["City", "Nature"] },
+  { "id": "queenstown", "name": "Queenstown", "country": "New Zealand", "summary": "The adventure capital amid lakes and alpine peaks.", "rating": 4.8, "priceFromUsd": 1250, "tags": ["Adventure", "Nature"] },
+  { "id": "lisbon", "name": "Lisbon", "country": "Portugal", "summary": "Tiled hills, trams, and Atlantic seafood.", "rating": 4.5, "priceFromUsd": 700, "tags": ["City", "Food"] },
+  { "id": "kerala", "name": "Kerala", "country": "India", "summary": "Backwaters, tea hills, and palm-fringed beaches.", "rating": 4.6, "priceFromUsd": 560, "tags": ["Nature", "Relax"] },
+  { "id": "patagonia", "name": "Patagonia", "country": "Argentina", "summary": "Glaciers, granite spires, and vast wilderness.", "rating": 4.9, "priceFromUsd": 1450, "tags": ["Adventure", "Hiking"] },
+  { "id": "hallstatt", "name": "Hallstatt", "country": "Austria", "summary": "A storybook lakeside village in the Alps.", "rating": 4.5, "priceFromUsd": 780, "tags": ["Village", "Scenic"] }
+]

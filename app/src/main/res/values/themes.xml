@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Window theme only. All in-app colors come from CWSTheme (Compose). NoActionBar so the
+         Compose CWSTopBar is the single app bar. -->
+    <style name="Theme.Codewithsandipds" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/cws_brand</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
