@@ -13,7 +13,7 @@ import com.codewithsandip.ds.tokens.CWSSpacing
 import com.codewithsandip.ds.tokens.CWSTypography
 
 /**
- * Root theme for the CodeWithSandip Design System. Provides the CWS CompositionLocals and also
+ * Root theme for the CWS Design System. Provides the CWS CompositionLocals and also
  * mirrors them into [MaterialTheme] so Material 3 components inside CWS components stay on-brand.
  *
  * @param colorScheme Semantic colors; defaults to dark/light based on the system setting.

@@ -26,7 +26,7 @@ public enum class CWSCardVariant {
 }
 
 /**
- * Container surface for grouping related content in the CodeWithSandip Design System.
+ * Container surface for grouping related content in the CWS Design System.
  *
  * Colors come from [LocalCWSColorScheme], corners from [LocalCWSShapes], and inner padding from
  * [LocalCWSSpacing]. Pass [onClick] to make the whole card a single tappable target.

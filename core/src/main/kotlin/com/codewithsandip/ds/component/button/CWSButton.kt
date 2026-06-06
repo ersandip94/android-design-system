@@ -100,7 +100,7 @@ private data class CWSButtonDimensions(
 )
 
 /**
- * Primary button component for the CodeWithSandip Design System.
+ * Primary button component for the CWS Design System.
  *
  * Colors come from [LocalCWSColorScheme], padding/sizing from [LocalCWSSpacing] and [size], and
  * corners from [LocalCWSShapes]. The touch target is always at least 48×48dp regardless of the

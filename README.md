@@ -2,10 +2,14 @@
 
 A two-in-one Android project:
 
-1. **CodeWithSandip Design System** (`:core`) — a Jetpack Compose component library with design
+1. **CWS Design System** (`:core`) — a Jetpack Compose component library with design
    tokens, theming (light/dark + custom brand), and a curated set of components.
 2. **A sample app** that consumes the design system to demonstrate a production-style, **feature-based
    Clean Architecture + MVVM** setup with **Hilt** DI, a mocked data layer, and Navigation Compose.
+
+### 📖 Documentation site → <https://ersandip94.github.io/android-design-system/>
+
+Browse the design-system components with light/dark previews, theming guides, and usage.
 
 ---
 

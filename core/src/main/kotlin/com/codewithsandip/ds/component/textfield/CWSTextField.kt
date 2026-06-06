@@ -15,7 +15,7 @@ import com.codewithsandip.ds.theme.LocalCWSShapes
 import com.codewithsandip.ds.theme.LocalCWSTypography
 
 /**
- * Single- or multi-line text input for the CodeWithSandip Design System.
+ * Single- or multi-line text input for the CWS Design System.
  *
  * Renders an outlined field themed from [LocalCWSColorScheme], [LocalCWSShapes], and
  * [LocalCWSTypography]. When [isError] is set, [errorText] replaces [helperText] in the error

@@ -42,7 +42,7 @@ class CwsPublishPlugin : Plugin<Project> {
                         artifactId = "ds-core"
                         version = dsVersion
                         pom {
-                            name.set("CodeWithSandip Design System")
+                            name.set("CWS Design System")
                             description.set("Jetpack Compose design system for Android")
                             url.set("https://codewithsandip.com")
                             licenses {

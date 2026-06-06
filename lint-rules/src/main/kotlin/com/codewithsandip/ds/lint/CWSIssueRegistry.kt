@@ -5,7 +5,7 @@ import com.android.tools.lint.client.api.Vendor
 import com.android.tools.lint.detector.api.CURRENT_API
 import com.android.tools.lint.detector.api.Issue
 
-/** Registry exposing the CodeWithSandip Design System's custom lint checks. */
+/** Registry exposing the CWS Design System's custom lint checks. */
 class CWSIssueRegistry : IssueRegistry() {
 
     override val issues: List<Issue> = listOf(

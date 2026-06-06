@@ -1,4 +1,4 @@
-# CodeWithSandip Design System
+# CWS Design System
 
 A **Jetpack Compose** design system — design tokens, theming (light / dark / custom brand), and a
 curated set of accessible components, all prefixed `CWS`.

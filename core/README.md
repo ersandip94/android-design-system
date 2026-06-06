@@ -1,10 +1,11 @@
-# CodeWithSandip Design System (`:core`)
+# CWS Design System (`:core`)
 
 A Jetpack Compose component library: design tokens, theming (light / dark / custom brand), and a
 curated set of accessible components — all prefixed `CWS`.
 
 - **Artifact:** `com.codewithsandip:ds-core`
 - **Brand color:** `#0C3A25` · **Min SDK:** 24 · 100% Kotlin + Compose
+- **📖 Documentation:** **<https://ersandip94.github.io/android-design-system/>**
 
 ```kotlin
 dependencies {
@@ -59,129 +60,14 @@ Access values anywhere: `MaterialTheme.cws.colorScheme.primary`, `MaterialTheme.
 
 ## Components
 
-### CWSButton
-Primary action button — variants, sizes, loading and disabled states, optional icons. 48dp touch
-target, semantics built in.
+Full component docs — with **light/dark previews**, usage, props, and variants — live on the
+documentation site:
 
-```kotlin
-CWSButton(
-    text = "Continue",
-    onClick = { },
-    variant = CWSButtonVariant.Primary,   // Primary · Secondary · Ghost · Danger
-    size = CWSButtonSize.Medium,           // Small · Medium · Large
-    loading = false,
-    leadingIcon = Icons.Default.Add,
-    contentDescription = "Continue",
-)
-```
+### 📖 [ersandip94.github.io/android-design-system](https://ersandip94.github.io/android-design-system/)
 
-### CWSTextField
-Outlined text input with label, placeholder, helper/error text, icons, and password masking.
-
-```kotlin
-CWSTextField(
-    value = email,
-    onValueChange = { email = it },
-    label = "Email",
-    placeholder = "you@example.com",
-    isError = emailError != null,
-    errorText = emailError,
-    leadingIcon = Icons.Default.Email,
-    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-)
-```
-
-### CWSCard
-Container surface — `Elevated`, `Outlined`, or `Filled`. Pass `onClick` to make the whole card a
-single tappable target.
-
-```kotlin
-CWSCard(variant = CWSCardVariant.Elevated, onClick = { }) {
-    Text("Title", style = MaterialTheme.typography.titleMedium)
-    Text("Supporting text")
-}
-```
-
-### CWSBadge / CWSCountBadge
-Small status indicator — a dot, a label, or a number. `status` drives the color
-(`Neutral · Info · Success · Warning · Error`).
-
-```kotlin
-CWSBadge(status = CWSBadgeStatus.Error)              // dot
-CWSBadge(text = "New", status = CWSBadgeStatus.Info) // label
-CWSCountBadge(count = 128, max = 99)                 // "99+"
-```
-
-### CWSChip
-Compact chip — `Filter` (toggleable), `Input` (removable), or `Suggestion`.
-
-```kotlin
-CWSChip("All", onClick = { }, variant = CWSChipVariant.Filter, selected = true)
-CWSChip("sandip@x.com", onClick = { }, variant = CWSChipVariant.Input, onClose = { })
-CWSChip("Kotlin", onClick = { }, variant = CWSChipVariant.Suggestion)
-```
-
-### CWSDialog
-Confirmation/alert dialog built from CWS buttons. `Destructive` styles the confirm action with the
-danger color.
-
-```kotlin
-CWSDialog(
-    onDismissRequest = { },
-    title = "Delete project?",
-    text = "This permanently removes the project and its data.",
-    confirmLabel = "Delete",
-    onConfirm = { },
-    variant = CWSDialogVariant.Destructive, // Default · Destructive
-)
-```
-
-### CWSBottomSheet
-Modal bottom sheet for contextual actions/content.
-
-```kotlin
-CWSBottomSheet(onDismissRequest = { }) {
-    Text("Share to", style = MaterialTheme.typography.titleMedium)
-    CWSButton("Copy link", onClick = { }, variant = CWSButtonVariant.Secondary)
-}
-```
-
-### CWSTopBar
-Top app bar with a title, optional navigation icon, and trailing actions.
-
-```kotlin
-CWSTopBar(
-    title = "Destinations",
-    navigationIcon = Icons.AutoMirrored.Filled.ArrowBack,
-    onNavigationClick = { },
-    actions = { IconButton(onClick = { }) { Icon(Icons.Default.MoreVert, "More") } },
-)
-```
-
-### CWSNavigationBar
-Bottom navigation with optional per-item badges.
-
-```kotlin
-CWSNavigationBar(
-    items = listOf(
-        CWSNavigationItem("Home", Icons.Default.Home),
-        CWSNavigationItem("Favorites", Icons.Default.Favorite, badgeCount = 5),
-        CWSNavigationItem("Settings", Icons.Default.Settings),
-    ),
-    selectedIndex = selected,
-    onSelect = { selected = it },
-)
-```
-
-### Toggles — CWSCheckbox · CWSRadioButton · CWSSwitch · CWSSlider
-Selection controls with optional labels and correct accessibility roles.
-
-```kotlin
-CWSCheckbox(checked, onCheckedChange = { checked = it }, label = "Subscribe to updates")
-CWSRadioButton(selected, onClick = { select() }, label = "Light")
-CWSSwitch(checked, onCheckedChange = { checked = it }, label = "Wi-Fi")
-CWSSlider(value, onValueChange = { value = it }, valueRange = 0f..1f, steps = 0)
-```
+`CWSButton` · `CWSTextField` · `CWSCard` · `CWSBadge` / `CWSCountBadge` · `CWSChip` · `CWSDialog`
+· `CWSBottomSheet` · `CWSTopBar` · `CWSNavigationBar` · `CWSCheckbox` / `CWSRadioButton` /
+`CWSSwitch` / `CWSSlider`
 
 ---
 

@@ -3,7 +3,7 @@ package com.codewithsandip.ds.tokens
 import androidx.compose.ui.graphics.Color
 
 /**
- * Raw color palette for the CodeWithSandip Design System, derived from the brand color
+ * Raw color palette for the CWS Design System, derived from the brand color
  * `#0C3A25`. These are primitive tokens — semantic mapping happens in the theme layer
  * ([com.codewithsandip.ds.theme]). Prefer theme colors in components, not these directly.
  */
