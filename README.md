@@ -7,8 +7,6 @@ A two-in-one Android project:
 2. **A sample app** that consumes the design system to demonstrate a production-style, **feature-based
    Clean Architecture + MVVM** setup with **Hilt** DI, a mocked data layer, and Navigation Compose.
 
-> Brand: [codewithsandip.com](https://codewithsandip.com) · Primary color `#0C3A25` · 100% Kotlin + Jetpack Compose
-
 ---
 
 ## Demo login
@@ -68,9 +66,6 @@ another feature. Within a feature, layering follows `presentation → domain ←
   `mock/users.json`) with `kotlinx.serialization`, with simulated latency for real loading states.
 - **Result type** — layers exchange `kotlin.Result<T>`; a typed `AppError` rides inside an
   `AppException` (see `appErrorOrNull()` / `appFailure()`).
-
-The full plan lives in [`docs/app-architecture-plan.md`](docs/app-architecture-plan.md), and the
-design-system build guide in [`codewithsandip-ds-guide.md`](codewithsandip-ds-guide.md).
 
 ---
 
