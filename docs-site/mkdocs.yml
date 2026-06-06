@@ -1,0 +1,69 @@
+site_name: CodeWithSandip Design System
+site_description: A Jetpack Compose design system — components, theming, and tokens.
+site_url: https://ersandip94.github.io/android-design-system/
+repo_name: ersandip94/android-design-system
+repo_url: https://github.com/ersandip94/android-design-system
+copyright: Copyright &copy; CodeWithSandip
+
+theme:
+  name: material
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: green
+      accent: green
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Get started: getting-started.md
+  - Theming:
+      - Colors: theming/colors.md
+      - Dark mode: theming/dark-mode.md
+      - Custom brand: theming/custom-brand.md
+  - Components:
+      - Button: components/button.md
+      - Text field: components/textfield.md
+      - Card: components/card.md
+      - Badge: components/badge.md
+      - Chip: components/chip.md
+      - Dialog: components/dialog.md
+      - Bottom sheet: components/bottomsheet.md
+      - Top bar: components/topbar.md
+      - Navigation bar: components/navigationbar.md
+      - Toggles: components/toggles.md

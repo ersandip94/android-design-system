@@ -15,3 +15,7 @@ build/
 .externalNativeBuild
 .cxx
 local.properties
+# MkDocs build output
+/docs-site/site/
+.cache/
+/docs-site/.venv/
