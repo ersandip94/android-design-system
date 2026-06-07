@@ -38,6 +38,9 @@ CWSTheme(colorScheme = cwsLightColorScheme(primaryBrand = Color(0xFF6750A4))) { 
 
 Access values anywhere: `MaterialTheme.cws.colorScheme.primary`, `MaterialTheme.cws.spacing.md`.
 
+📖 Full theming guide — colors, dark mode, custom brand —
+[on the docs site](https://ersandip94.github.io/android-design-system/theming/colors/).
+
 ### Tokens
 
 | Token | Examples |
@@ -81,15 +84,10 @@ usages that omit a `contentDescription`.
 
 ## Previews & screenshot tests
 
-Every component ships `@Preview`s (light + dark). The design system is covered by **64 golden
-images** via the official Compose Preview Screenshot Testing plugin:
-
-```bash
-./gradlew :core:updateDebugScreenshotTest    # record
-./gradlew :core:validateDebugScreenshotTest  # verify
-```
-
-Screenshot test functions are annotated `@PreviewTest @LightDarkPreview @Composable`.
+Every component ships `@Preview`s (light + dark) and is covered by **64 golden images** via the
+Compose Preview Screenshot Testing plugin. See the
+[Testing Strategy](https://ersandip94.github.io/android-design-system/engineering/testing/) for how
+it's set up and run.
 
 ---
 

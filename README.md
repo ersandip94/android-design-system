@@ -1,15 +1,47 @@
-# CodeWithSandip — Design System + Sample App
+# CWS Design System + Sample App
 
 A two-in-one Android project:
 
-1. **CWS Design System** (`:core`) — a Jetpack Compose component library with design
-   tokens, theming (light/dark + custom brand), and a curated set of components.
-2. **A sample app** that consumes the design system to demonstrate a production-style, **feature-based
-   Clean Architecture + MVVM** setup with **Hilt** DI, a mocked data layer, and Navigation Compose.
+1. **CWS Design System** (`:core`) — a publishable Jetpack Compose component library with design
+   tokens, theming (light / dark / custom brand), and accessible components, prefixed `CWS`.
+2. **A sample app** that consumes it to demonstrate production-style, feature-based
+   **Clean Architecture + MVVM** with **Hilt**, a mocked data layer, and Navigation Compose.
 
-### 📖 Documentation site → <https://ersandip94.github.io/android-design-system/>
+### 📖 Full documentation → <https://ersandip94.github.io/android-design-system/>
 
-Browse the design-system components with light/dark previews, theming guides, and usage.
+Everything below is the quick "run it locally" guide — the docs site is the deep reference for
+**API design, versioning, testing, architecture, theming, and components**.
+
+▶ **[Watch the app demo](assets/app-demo.mp4)** (`assets/app-demo.mp4`)
+
+---
+
+## Documentation
+
+The repo's depth lives in the docs site — start here rather than duplicating it in the README:
+
+| Page | What it covers |
+|---|---|
+| 🧩 [API Design Philosophy](https://ersandip94.github.io/android-design-system/engineering/api-design/) | Slot APIs, state hoisting, the `modifier` convention, enums over booleans, bad-vs-good API |
+| 🏷️ [Versioning & Migration](https://ersandip94.github.io/android-design-system/engineering/versioning/) | SemVer for a UI library, deprecation policy, changelogs, migration guides |
+| 🧪 [Testing Strategy](https://ersandip94.github.io/android-design-system/engineering/testing/) | 64 light/dark goldens, Compose UI tests, accessibility, custom lint |
+| 🗺️ [Architecture](https://ersandip94.github.io/android-design-system/architecture/) | Layered (Clean Architecture) view, the `login()` request lifecycle, module graph |
+| 🎨 [Theming](https://ersandip94.github.io/android-design-system/theming/colors/) | Color tokens, dark mode, custom brand re-skin |
+| 🧱 [Components](https://ersandip94.github.io/android-design-system/components/button/) | 10+ components with light/dark previews |
+
+---
+
+## Highlights
+
+- **Feature-based modularization + Clean Architecture** — features depend only on `:core` + `:domain`,
+  never on each other or on `:data`. `:domain` is pure, annotation-free Kotlin.
+- **Publishable design system** — `com.codewithsandip:ds-core`, with a custom accessibility lint check
+  (`CWSMissingContentDescription`) shipped *inside the AAR*.
+- **Tested like a product** — 64 screenshot goldens (light + dark), Compose UI tests, ViewModel +
+  domain unit tests, and a tested lint detector.
+- **Convention plugins** (`:buildlogic`) keep every module's build file ~10 lines.
+
+---
 
 ## Demo login
 
@@ -22,118 +54,49 @@ Or tap **Sign up** to register any account (kept in an in-memory mock store for 
 
 ---
 
-## Architecture
+## Build & run
 
-**Feature-based modularization + Clean Architecture.** Each feature is a self-contained Gradle
-module that owns its UI and ViewModels and depends only on the shared *core* modules — never on
-another feature. Within a feature, layering follows `presentation → domain ← data`.
+```bash
+# Build everything
+./gradlew assembleDebug
 
-```mermaid
-flowchart LR
-    app[":app - Composition root"]
-    auth[":feature:auth - Login and signup"]
-    home[":feature:home - Destinations"]
-    core[":core - Compose design system"]
-    domain[":domain - Models, use cases, repository interfaces"]
-    data[":data - Repository implementations, Hilt modules, mock APIs"]
-    mock[":data resources - Mock JSON"]
-    lint[":lint-rules - Custom accessibility checks"]
-    buildlogic[":buildlogic - Gradle convention plugins"]
-    docs["docs-site - Component documentation"]
+# Install on a connected device/emulator
+./gradlew :app:installDebug
 
-    app -->|"hosts navigation graphs"| auth
-    app -->|"hosts navigation graphs"| home
-    app -->|"installs data bindings"| data
-    app -->|"applies theme and components"| core
-    app -->|"uses domain models"| domain
-
-    auth -->|"uses UI components"| core
-    auth -->|"calls use cases"| domain
-    home -->|"uses UI components"| core
-    home -->|"calls use cases"| domain
-
-    data -->|"implements interfaces"| domain
-    data -->|"reads bundled JSON"| mock
-
-    core -->|"publishes lint checks"| lint
-    docs -->|"documents components and theming"| core
-
-    buildlogic -.->|"configures"| app
-    buildlogic -.->|"configures"| auth
-    buildlogic -.->|"configures"| home
-    buildlogic -.->|"configures"| core
-    buildlogic -.->|"configures"| data
-    buildlogic -.->|"configures"| domain
-    buildlogic -.->|"configures"| lint
+# …or open in Android Studio and run the :app configuration
 ```
 
-### Module types
+## Tests
 
-| Type | Modules | Responsibility |
+```bash
+./gradlew test testDebugUnitTest        # all JVM unit tests
+./gradlew :core:validateDebugScreenshotTest   # verify screenshot goldens
+./gradlew :core:lintDebug               # custom accessibility lint
+```
+
+> ⚠️ Instrumented (Compose UI) tests need an emulator on **API ≤ 36** — Espresso 3.7.0 reflects on
+> the removed `InputManager.getInstance()` and fails on API 37. Unit and screenshot tests are
+> unaffected. See the [Testing Strategy](https://ersandip94.github.io/android-design-system/engineering/testing/)
+> for the full picture.
+
+---
+
+## Modules
+
+| Module | Path | Purpose |
 |---|---|---|
-| **App** | `:app` | Composition root — Navigation host, theme switching, Hilt bootstrap |
-| **Feature** | `:feature:auth`, `:feature:home` | Vertical slices: screens + `@HiltViewModel`s + nav graph |
-| **Core / shared** | `:core`, `:domain`, `:data` | Reusable layers shared across features |
-| **Tooling** | `:lint-rules`, `:buildlogic` | Custom lint checks · Gradle convention plugins |
+| `:app` | `app/` | Composition root — navigation host, theme switching, Hilt bootstrap |
+| `:feature:auth` | `feature/auth/` | Login + Signup screens, ViewModels, nav graph |
+| `:feature:home` | `feature/home/` | Destinations list + detail |
+| `:core` | `core/` | Design system — components, theme, tokens ([README](core/README.md)) |
+| `:domain` | `domain/` | Pure Kotlin — models, use cases, repository interfaces, validators |
+| `:data` | `data/` | Repository impls, Hilt modules, mock JSON-backed APIs |
+| `:lint-rules` | `lint-rules/` | Custom accessibility lint, bundled into `:core` |
+| `:buildlogic` | `buildlogic/` | Gradle convention plugins |
+| docs | `docs-site/` | MkDocs Material documentation site |
 
-- **`:core`** — the design system (Compose components, theme, tokens). See [`core/README.md`](core/README.md).
-- **`:domain`** — pure Kotlin: models, repository interfaces, use cases, validators (no Android).
-- **`:data`** — repository implementations, mock JSON-backed APIs, Hilt modules.
-
-### Dependency rules
-
-```
-:app ──▶ :feature:auth ─┐
-     ──▶ :feature:home ─┼──▶ :core    (design system)
-     ──▶ :data          └──▶ :domain  (models + use cases)
-            └──────────────▶ :domain
-```
-
-- A feature depends on `:core` + `:domain` only — **never** on `:data` or on another feature.
-- Only `:app` depends on `:data` (so Hilt can register its modules); features receive repository
-  *interfaces* by injection.
-- `:domain` is pure Kotlin and **annotation-free** — Hilt lives only in the Android layers.
-- Common build config lives in `:buildlogic` convention plugins, so each module's build file is
-  ~10 lines (`cws.android.feature`, `cws.android.data`, `cws.kotlin.library`, …).
-
-**Principles**
-
-- **Clean Architecture** — `presentation → domain ← data`. `:domain` is pure Kotlin and
-  annotation-free; Hilt lives only in the Android layers.
-- **MVVM + UDF** — ViewModels expose immutable `StateFlow<UiState>`; screens are stateless and
-  driven by state + callbacks; one-shot events flow through a `Channel`.
-- **DI with Hilt** — interfaces are bound in `:data`; ViewModels are `@HiltViewModel`.
-- **Mocked network** — `:data` deserializes bundled JSON "responses" (`mock/destinations.json`,
-  `mock/users.json`) with `kotlinx.serialization`, with simulated latency for real loading states.
-- **Result type** — layers exchange `kotlin.Result<T>`; a typed `AppError` rides inside an
-  `AppException` (see `appErrorOrNull()` / `appFailure()`).
-
----
-
-## The design system (`:core`)
-
-Design tokens (`CWSColors`, `CWSSpacing`, `CWSTypography`, `CWSShape`, `CWSElevation`, `CWSMotion`),
-theming (`CWSTheme`, light/dark/custom `CWSColorScheme`), and components:
-
-`CWSButton` · `CWSTextField` · `CWSCard` · `CWSBadge` · `CWSChip` · `CWSDialog` · `CWSBottomSheet`
-· `CWSTopBar` · `CWSNavigationBar` · `CWSCheckbox` / `CWSRadioButton` / `CWSSwitch` / `CWSSlider`
-
-Every component reads colors/spacing/shapes from the theme, ships `@Preview`s, meets a 48dp touch
-target, and has accessibility semantics. A custom lint check (`CWSMissingContentDescription`) ships
-with the AAR to nudge consumers toward labeled UI.
-
-```kotlin
-CWSTheme {
-    CWSButton(text = "Continue", onClick = { /* … */ })
-}
-```
-
----
-
-## Sample app flow
-
-**Launch → Login / Sign up → Destinations (10 places) → Detail → Sign out**, with live
-Light / Dark / System theme switching from the top bar throughout.
+See [Architecture](https://ersandip94.github.io/android-design-system/architecture/) for the diagram
+and dependency rules.
 
 ---
 
@@ -143,75 +106,11 @@ Light / Dark / System theme switching from the top bar throughout.
 |---|---|
 | Language | Kotlin 2.2.10 |
 | UI | Jetpack Compose (BOM 2026.05.01), Material 3 |
-| Build | AGP 9.2.1, Gradle 9.4.1 (with built-in Kotlin) |
+| Build | AGP 9.2.1, Gradle 9.4.1 |
 | DI | Hilt 2.59.2 (+ KSP) |
-| Async | Coroutines + Flow |
-| Serialization | kotlinx.serialization (JSON) |
+| Async / Serialization | Coroutines + Flow · kotlinx.serialization |
 | Navigation | Navigation Compose |
 | Min / compile SDK | 24 / 36 (`:core`), 37 (app stack) |
-
----
-
-## Build & run
-
-```bash
-# Build everything
-./gradlew assembleDebug
-
-# Install the app on a connected device/emulator
-./gradlew :app:installDebug
-
-# Or open in Android Studio and run the :app configuration
-```
-
----
-
-## Testing
-
-```bash
-# All JVM unit tests (domain, data, feature ViewModels, design-system tokens/theme, lint rule)
-./gradlew test testDebugUnitTest
-
-# Record / verify design-system screenshot goldens (Compose Preview Screenshot Testing)
-./gradlew :core:updateDebugScreenshotTest
-./gradlew :core:validateDebugScreenshotTest
-
-# Run the custom lint check
-./gradlew :core:lintDebug
-
-# Instrumented (Compose UI) tests — see the note below
-./gradlew :core:connectedDebugAndroidTest
-```
-
-**Test coverage**
-
-- **Unit** — use cases & validators (`:domain`), repository impls & JSON parsing (`:data`),
-  ViewModels via Turbine + a `MainDispatcherRule` (`:feature:*`), tokens/theme (`:core`), and the
-  lint detector (`:lint-rules`).
-- **Screenshot** — 64 light/dark goldens across all design-system components.
-- **Instrumented UI** — Compose UI tests for the components (and ready for the feature screens).
-
-> ⚠️ **Instrumented tests need an emulator on API ≤ 36.** On API 37, Espresso 3.7.0 reflects on the
-> removed `InputManager.getInstance()` and every instrumented test fails during setup. Unit and
-> screenshot tests are unaffected.
-
----
-
-## Project layout
-
-```
-codewithsandip-ds/
-├─ app/            Sample application
-├─ feature/
-│  ├─ auth/        Login + Signup feature
-│  └─ home/        Destinations feature
-├─ core/           Design system (publishable as com.codewithsandip:ds-core)
-├─ domain/         Pure-Kotlin domain layer
-├─ data/           Mock data layer
-├─ lint-rules/     Custom lint checks
-├─ buildlogic/     Convention plugins
-└─ docs/           Architecture plan
-```
 
 ---
 
