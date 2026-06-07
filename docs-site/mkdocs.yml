@@ -5,6 +5,10 @@ repo_name: ersandip94/android-design-system
 repo_url: https://github.com/ersandip94/android-design-system
 copyright: Copyright &copy; CodeWithSandip
 
+# Reachable via the Home page's "Get started" button, intentionally not a top-level tab.
+not_in_nav: |
+  /getting-started.md
+
 theme:
   name: material
   palette:
@@ -55,7 +59,9 @@ markdown_extensions:
 
 nav:
   - Home: index.md
-  - Get started: getting-started.md
+  - API design: engineering/api-design.md
+  - Versioning: engineering/versioning.md
+  - Testing: engineering/testing.md
   - Architecture: architecture.md
   - Theming:
       - Colors: theming/colors.md

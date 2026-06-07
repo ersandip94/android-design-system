@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="17">
+      <module name="codewithsandip-ds.app" target="21" />
+      <module name="codewithsandip-ds.core" target="21" />
+      <module name="codewithsandip-ds.data" target="21" />
+      <module name="codewithsandip-ds.feature.auth" target="21" />
+      <module name="codewithsandip-ds.feature.home" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -11,16 +11,6 @@ A two-in-one Android project:
 
 Browse the design-system components with light/dark previews, theming guides, and usage.
 
----
-
-## App demo
-
-<video src="assets/app-demo.mp4" controls width="320">
-  Your browser does not support the video tag.
-</video>
-
----
-
 ## Demo login
 
 | Field | Value |
